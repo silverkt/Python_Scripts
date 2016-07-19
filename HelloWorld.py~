@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8  -*- 
 
-
-
 name = input("请输入您的姓名:");
 print("亲爱的%s你好，您的年龄为%d" % (name,5),"岁");
 
 for x in list(range(100)):
-	print(x);
+#	print(x);
+        pass;
 print('end');
 
 a = '包含中文的输出';
@@ -27,15 +26,17 @@ print(classmate[1]);
 i = 0;
 while i<10 :
         i+=1;
-        print(i);
+#        print(i);
 else :
-        print('this is the end of story');
+#        print('this is the end of story');
+    pass;
 
 for i in [30,45,50] :
-        print(i);
-        
+#        print(i);
+    pass;
+
 i = list( i for i in range(20));
-print(i);
+#print(i);
 input();
 
 
@@ -67,7 +68,7 @@ wget_es = {
     8<<8: "Server issued an error response."
 };
 
-print(wget_es);
+#print(wget_es);
 import sys;
 
 
@@ -93,5 +94,4 @@ print(type(r.encoding));
 #f.write(st);
 #f.close();
 
-
- 
+print(__name__);

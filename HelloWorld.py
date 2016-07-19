@@ -95,3 +95,28 @@ print(type(r.encoding));
 #f.close();
 
 print(__name__);
+
+url = 'http://sendcloud.sohu.com/webapi/mail.send.json';
+data = {
+        'api_user':'mymailsender_test_cevEkq',
+        'api_key':'PJJUCyhMeBgOkxOO',
+        'from':'itisagift@yeah.net',
+        'fromname':'悦想城科技',
+        'to':'1339964679@qq.com',
+        'subject':'悦想城认证通知邮件',
+        'html':'您的认证已通过，谢谢'
+        }
+
+data = {
+        'api_user':'mymailsender_test_cevEkq',
+        'api_key':'PJJUCyhMeBgOkxOO',
+        'from':'itisagift@yeah.net',
+        'fromname':'悦想城科技',
+        'to':'1339964679@qq.com',
+        'subject':'悦想城认证通知邮件',
+        'html':'您的认证并未通过，请按要求更新您的资料后再次提交，谢谢'
+        }
+
+r = requests.post(url,data=data);
+
+print(r.text);
