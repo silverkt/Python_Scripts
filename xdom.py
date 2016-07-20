@@ -19,10 +19,24 @@ def searchDomain(domain) :
 #####
 
 
-res = searchDomain('baidu')
-print(res)
+###res = searchDomain('baidu')
+###print(res)
 
 full_str = 'abcdefghijklmnopqrstuvwxyz1234567890-'
 nof_domain = 3
-for s in full_str :
-    print(s)
+
+
+def collapeDomain(times=1, s_str='') :
+    if times != 0 :
+        times = times - 1
+        for s in full_str :
+            x = s_str + s
+            collapeDomain(times, x)            
+    else :
+        print(s_str)
+        return
+full_str = 'abc'
+    
+
+a = collapeDomain(3)
+##print(a.next())

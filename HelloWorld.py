@@ -117,6 +117,13 @@ data = {
         'html':'您的认证并未通过，请按要求更新您的资料后再次提交，谢谢'
         }
 
-r = requests.post(url,data=data);
+##r = requests.post(url,data=data);
 
-print(r.text);
+##print(r.text);
+
+
+def abc(a=4):
+        print('a is %d,b is %d'%(a,b))
+
+b = 33
+abc()
