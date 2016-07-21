@@ -3,11 +3,14 @@
 
 import requests
 import json
-
+import random
+import time
+import sys
+sys.setrecursionlimit(2147483647)
 
 ##
 def searchDomain(domain) :
-    url = 'http://checkdomain.xinnet.com/domainCheck?searchRandom=4&prefix='+domain+'&suffix=.com'
+    url = 'http://checkdomain.xinnet.com/domainCheck?searchRandom='+str(random.randint(0,9))+'&prefix='+domain+'&suffix=.com'
     r = requests.get(url)
     json_str = r.text.lstrip('null(').rstrip(')')
     json_list = json.loads(json_str)
@@ -19,24 +22,34 @@ def searchDomain(domain) :
 #####
 
 
-###res = searchDomain('baidu')
-###print(res)
+##res = searchDomain('baidu')
+##print(res)
+
+
+
+
+def collapeDomain(times=0, full_str='', s_str='') :
+    times = times - 1
+    if times != 0 :
+        for s in full_str :
+            for i in collapeDomain(times, full_str, s_str+s):
+                yield i
+            
+    else :
+        for s in full_str :
+            yield s_str+s
+    return 
 
 full_str = 'abcdefghijklmnopqrstuvwxyz1234567890-'
-nof_domain = 3
-
-
-def collapeDomain(times=1, s_str='') :
-    if times != 0 :
-        times = times - 1
-        for s in full_str :
-            x = s_str + s
-            collapeDomain(times, x)            
+times = 3
+for domain in collapeDomain(times, full_str):
+    time.sleep(1)
+    if searchDomain(domain) == False :
+        print(domain)
+        pass
     else :
-        print(s_str)
-        return
-full_str = 'abc'
-    
-
-a = collapeDomain(3)
-##print(a.next())
+        print('--'+domain)
+        with open('domains.txt', 'a+') as f:
+            f.write(domain)
+        
+        

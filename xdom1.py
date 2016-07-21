@@ -19,39 +19,24 @@ def searchDomain(domain) :
 #####
 
 
-##res = searchDomain('baidu')
-##print(res)
+###res = searchDomain('baidu')
+###print(res)
 
 full_str = 'abcdefghijklmnopqrstuvwxyz1234567890-'
 nof_domain = 3
 
-def collapeDomain(times, full_str, s_str) :
-    times = times - 1
+
+def collapeDomain(times=1, s_str='') :
     if times != 0 :
+        times = times - 1
         for s in full_str :
-            collapeDomain(times, full_str, s_str+s)
-            yield s_str+s
+            x = s_str + s
+            collapeDomain(times, x)            
     else :
-        for s in full_str :
-            yield s_str+s
-    yield
-        
-            
-
-x = collapeDomain(2,'abc', '')
-
-for a in x :
-    print(a)
-    
-
-
-def test(max) :
-    for s in range(max) :
-        yield s
+        print(s_str)
         return
+full_str = 'abc'
     
-x = test(6)
 
-for a in x :
-    print(a)
-
+a = collapeDomain(3)
+##print(a.next())
