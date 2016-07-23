@@ -21,7 +21,6 @@ def searchDomain(domain) :
         return False
 #####
 
-
 ##res = searchDomain('baidu')
 ##print(res)
 
