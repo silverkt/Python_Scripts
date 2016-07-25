@@ -6,26 +6,26 @@ import json
 import random
 import time
 import sys
-import bs4
+from bs4 import BeautifulSoup
+
 sys.setrecursionlimit(2147483647)
 
-##
+###### revise searchDomain for 1stchina
 def searchDomain(domain) :
-    url = 'http://checkdomain.xinnet.com/domainCheck?searchRandom='+str(random.randint(0,9))+'&prefix='+domain+'&suffix=.com'
+    url = 'http://idc.1stchina.com/style/info/domaincheckpub.asp?domain='+domain+'&button=&com=yes&net=yes&org=yes'
     r = requests.get(url)
-    json_str = r.text.lstrip('null(').rstrip(')')
-    json_list = json.loads(json_str)
-    domain_status = json_list[0]['result'][0]
-    if domain_status['yes'] != [] :
+    soup = BeautifulSoup(r.content,'html.parser')
+    d = soup.input
+    if d == None:
+        return False
+    d = next(d.children)
+    if d == domain+'.com' :
         return True
     else :
         return False
-#####
+    return False
 
-##res = searchDomain('baidu')
-##print(res)
-
-
+## create domain
 def collapeDomain(times=0, full_str='', s_str='') :
     times = times - 1
     if times != 0 :
@@ -42,12 +42,12 @@ full_str = 'abcdefghijklmnopqrstuvwxyz1234567890-'
 times = 3
 for domain in collapeDomain(times, full_str):
     time.sleep(1)
-    if searchDomain1(domain) == False :
+    if searchDomain(domain) == False :
         print(domain)
         pass
     else :
         print('--'+domain)
-        with open('domains.txt', 'a+') as f:
+        with open('domains.txt', 'a+') as f :
             f.write(domain)
-        
-        
+
+

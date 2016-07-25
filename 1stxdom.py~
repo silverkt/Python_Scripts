@@ -25,6 +25,11 @@ def searchDomain(domain) :
 ##res = searchDomain('baidu')
 ##print(res)
 
+###### revise searchDomain for 1stchina
+def searchDomain1(domain) :
+    url = 'http://idc.1stchina.com/style/info/domaincheckpub.asp?domain='+domain+'&button=&com=yes&net=yes&org=yes'
+    return True
+
 
 def collapeDomain(times=0, full_str='', s_str='') :
     times = times - 1
