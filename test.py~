@@ -1,0 +1,7 @@
+class Controller():
+    x = 'name'
+    y = 'action'
+    def actionOrder():
+        print('this is actionOrder')
+
+print(Controller.x)
