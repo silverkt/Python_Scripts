@@ -1,2 +1,2 @@
-# python_study
-a repository for studing python
+# python_script
+just for fun and dig in
